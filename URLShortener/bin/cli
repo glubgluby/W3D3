@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+puts 'Enter your email'
+
+emailx = gets.chomp
+
+t = User.find_by(email: emailx)
+
+puts "would you like to visit a shorter URL or create one? enter '1' or '2'"
+response = gets.chomp
+
+if response == '1'
+    puts Shortened_Url.find_by(t.id).short_url
+else
+    ShortenedUrl.shorten(t, "www.google.com")
+end
